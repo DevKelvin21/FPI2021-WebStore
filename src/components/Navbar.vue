@@ -2,7 +2,7 @@
   <div>
     <b-navbar class="fixed-top" toggleable="lg" type="dark" variant="dark">
       <b-container>
-          <router-link to="/">
+      <router-link to="/">
         <b-navbar-brand class="d-none d-xl-block d-xxl-block mb-1">
             <label class="mt-1 mr-2 d-none d-xl-block d-xxl-block">
                 <b-icon icon="phone-vibrate" style="color: #FFFF;"></b-icon>
@@ -10,7 +10,7 @@
             </label>
         </b-navbar-brand>
       </router-link>
-      
+
       <b-nav-form class="control-form ml-1">
         <b-icon icon="search" class="iconBuscar mb-1"></b-icon>
         <b-form-input size="md" class="mr-sm-2 rounded-pill input-buscar mb-1" placeholder="Search"></b-form-input>
@@ -21,7 +21,7 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-navbar-nav>
-            <router-link to="/" class="d-block">
+            <router-link to="/" class="d-none d-sm-none d-md-none d-lg-block d-xl-block">
               <b-button class="mr-1 ml-1 mb-1 text-center boton inicio">
                 <span>
                   Inicio
@@ -29,24 +29,70 @@
                 <b-icon icon="house" class="i icono"></b-icon>
               </b-button>
             </router-link>
+
+            <div class="d-none d-sm-none d-md-none d-lg-block d-xl-block">
             <b-button class="mr-1 ml-1 mb-1 text-center boton estadisticas">
               <span>
                 Estadisticas
               </span>
               <b-icon icon="file-bar-graph-fill" class="i icono"></b-icon>
             </b-button>
-
-            <router-link to="/newarticle">
+            </div>
+            <router-link to="/newarticle" class="d-none d-sm-none d-md-none d-lg-block d-xl-block">
               <b-button class="mr-1 ml-1 mb-1 buttons">
                 <b-icon icon="plus-circle-fill" style="color: #f37848;"></b-icon>
               </b-button>
             </router-link>
 
-            <b-button class="mr-1 ml-1 mb-1 buttons">
+            <b-button class="mr-1 ml-1 mb-1 position-relative buttons d-none d-sm-none d-md-none d-lg-block d-xl-block">
               <b-icon icon="cart-3" style="color: #f37848;"></b-icon>
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill">
                 <b-badge href="#" pill variant="dark" style="background-color: #f37848;">+99</b-badge></span>
             </b-button>
+
+            
+            <b-navbar-brand>
+              <router-link to="/" style="color: #FFFF;">
+                <label class="mt-1 pb-1 mr-2 d-block d-sm-block d-md-block d-xl-none d-lg-none" style="border-bottom: 1px solid #FFFF;">
+                    <b-icon icon="phone-vibrate" style="color: #FFFF;"></b-icon>
+                    Tienda CellPhone
+                </label>
+                </router-link>
+            </b-navbar-brand>
+          
+          
+            <b-navbar-brand>
+              <router-link to="/" style="color: #FFFF;">
+                <label class="pb-1 mr-2 d-block d-sm-block d-md-block d-xl-none d-lg-none" style="border-bottom: 1px solid #FFFF;">
+                    <b-icon icon="house" style="color: #FFFF;"></b-icon>
+                    Inicio
+                </label>
+                </router-link>
+            </b-navbar-brand>
+
+            <b-navbar-brand>
+              <router-link to="/newarticle" style="color: #FFFF;">
+                <label class="pb-1 mr-2 d-block d-sm-block d-md-block d-xl-none d-lg-none" style="border-bottom: 1px solid #FFFF;">
+                    <b-icon icon="plus-circle-fill" style="color: #FFFF;"></b-icon>
+                    Nuevo anuncio
+                </label>
+                </router-link>
+            </b-navbar-brand>
+            
+            <b-navbar-brand>
+                <label class="pb-1 mr-2 d-block d-sm-block d-md-block d-xl-none d-lg-none" style="border-bottom: 1px solid #FFFF;">
+                    <b-icon icon="cart-3" style="color: #FFFF;"></b-icon>
+                    Carrito
+                </label>
+            </b-navbar-brand>
+
+            <b-navbar-brand>
+                <label class="pb-1 mr-2 d-block d-sm-block d-md-block d-xl-none d-lg-none" style="border-bottom: 1px solid #FFFF;">
+                    <b-icon icon="file-bar-graph-fill" style="color: #FFFF;"></b-icon>
+                    Estadisticas
+                </label>
+            </b-navbar-brand>
+
           </b-navbar-nav>
         </b-navbar-nav>
       </b-collapse>
@@ -190,8 +236,6 @@ export default {};
 .boton.estadisticas:hover span {
 	left: 8px;
 }
-
-
 
 
 
