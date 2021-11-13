@@ -7,93 +7,56 @@
 
       <label for="marca" class="mb-1">Marca</label>
       <b-list-group class="mb-2" id="marca">
-        <b-list-group-item class="d-flex justify-content-between align-items-center">
-          Samsung
-          <b-badge  pill>14</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          Huawei
-          <b-badge variant="primary" pill>2</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          Nokia
-          <b-badge variant="primary" pill>1</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          iPhone
-          <b-badge variant="primary" pill>14</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          Xiaomi
-          <b-badge variant="primary" pill>14</b-badge>
+        <b-list-group-item class="d-flex justify-content-between align-items-center" v-for="(filtro,key) in filtros" :key="key">
+          <b-form-checkbox>
+            {{filtro.Marca}}
+          </b-form-checkbox>
+          <b-badge style="background-color: #FF7146;" pill>1</b-badge>
         </b-list-group-item>
       </b-list-group>
 
-      <label for="marca" class="mb-2">Sistema</label>
-      <b-list-group class="mb-2">
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          Android
-          <b-badge variant="primary" pill>14</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          Windows
-          <b-badge variant="primary" pill>2</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          ios
-          <b-badge variant="primary" pill>1</b-badge>
+      <label for="sistema" class="mb-1">Sistema</label>
+      <b-list-group class="mb-2" id="sistema">
+        <b-list-group-item class="d-flex justify-content-between align-items-center" v-for="(filtro,key) in filtros" :key="key">
+          <b-form-checkbox>
+            {{filtro.Sistema}}
+          </b-form-checkbox>
+          <b-badge style="background-color: #FF7146;" pill>1</b-badge>
         </b-list-group-item>
       </b-list-group>
 
-      <label for="marca" class="mb-2">Pantalla</label>
-      <b-list-group class="mb-2">
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          6.0
-          <b-badge variant="primary" pill>14</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          5.5
-          <b-badge variant="primary" pill>2</b-badge>
-        </b-list-group-item>
-
-        <b-list-group-item
-          class="d-flex justify-content-between align-items-center"
-        >
-          5
-          <b-badge variant="primary" pill>1</b-badge>
+      <label for="pantalla" class="mb-1">Pantalla</label>
+      <b-list-group class="mb-2" id="pantalla">
+        <b-list-group-item class="d-flex justify-content-between align-items-center" v-for="(filtro,key) in filtros" :key="key">
+          <b-form-checkbox>
+            {{filtro.Pantalla}}
+          </b-form-checkbox>
+          <b-badge style="background-color: #FF7146;" pill>1</b-badge>
         </b-list-group-item>
       </b-list-group>
+
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+
+  import { db } from "../db"
+
+  export default {
+    name:"Lateralbar",
+    data() {
+      return {
+        filtros: [],
+      }
+    },
+    firestore: {
+      filtros : db.collection("anuncios"),
+    },
+    computed :{
+
+    },
+  };
 </script>
 
 <style scoped>
@@ -104,7 +67,7 @@ export default {};
   position: fixed;
 }
 
-.b-form-checkbox:checked{
+.b-form-checkbox-input:checked{
   background-color: #FF7146;
   border: 1px solid #FF7146;
 }
@@ -117,7 +80,7 @@ export default {};
   background: #f6f6f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4b499;
+  background: #FF7146;
   border-radius: 20px;
 }
 </style>
