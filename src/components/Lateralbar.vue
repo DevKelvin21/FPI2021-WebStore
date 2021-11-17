@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class=" container mt-5 overflow-auto menuIzquierdo d-none d-sm-none d-md-none d-xl-block d-lg-block ">
+    <div class=" container ml-3 mt-5 overflow-auto lateralBar d-none d-sm-none d-md-none d-xl-block d-lg-block ">
       <b-container class="mb-2">
         <b-form-checkbox class="m-0" switch size="lg">Nuevo</b-form-checkbox>
       </b-container>
@@ -60,7 +60,7 @@
 </script>
 
 <style scoped>
-.menuIzquierdo {
+.lateralBar {
   height: 85vh;
   width: 280px;
   scroll-behavior: smooth;
