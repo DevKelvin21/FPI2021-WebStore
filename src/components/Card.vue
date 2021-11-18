@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name: "Card",
   props : ["anuncio"]
 }
 </script>
