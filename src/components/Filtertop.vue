@@ -27,9 +27,10 @@
           <div class="border border-bg01 filter-top">
             Ordenar por :
             <div class="btn">
-              <button type="submit" class="boton precio mt-1">
+              <button @click="OrdenarPrecio" type="submit" class="boton precio mt-1">
                 <div class="icono">
-                  <b-icon icon="arrow-down-short"></b-icon>
+                  <b-icon v-show="precioAsc" icon="arrow-up-short"></b-icon>
+                  <b-icon v-show="!precioAsc" icon="arrow-down-short"></b-icon>
                 </div>
                 <span>Precio</span>
               </button>
@@ -52,11 +53,22 @@
 <script>
 export default {
   name : "Filtertop",
+  data() {
+    return {
+      Ascendente: true,
+
+    }
+  },
+  methods: {
+    OrdenarPrecio(){
+      
+    }
+  },
 };
 </script>
 
 <style>
-.border-bg01 {
+.border-bg01 {  
   border: 1px solid #f37848 !important;
   border-radius: 5px;
 }

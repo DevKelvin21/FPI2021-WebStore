@@ -21,7 +21,7 @@
           v-for="(marca, key) in marcas"
           :key="key"
         >
-          <b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros">
             {{ marca }}
           </b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill>1</b-badge>
@@ -35,7 +35,7 @@
           v-for="(sistema, key) in sistemas"
           :key="key"
         >
-          <b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros">
             {{ sistema }}
           </b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill>1</b-badge>
@@ -49,7 +49,7 @@
           v-for="(pantalla, key) in pantallas"
           :key="key"
         >
-          <b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros">
             {{ pantalla }}
           </b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill>1</b-badge>
@@ -67,7 +67,24 @@ export default {
       marcas: ["Iphone", "Samsung", "Xiaomi", "Nokia"],
       pantallas: ["6.2", "5.5", "5"],
       sistemas: ["Android", "Ios"],
+      filsistemas:[],
+      filpantallas: [],
+      filmarcas:[],
     };
+  },
+  methods: {
+    emitirFiltros(){
+      var x = {filsistemas:[], filpantallas:[], filmarcas:[]}
+      if(this.filsistemas.length>0)
+        x.filsistemas=this.filsistemas
+      if(this.filpantallas.length>0)
+        x.filpantallas=this.filpantallas
+      if(this.filmarcas.length>0)
+        x.filmarcas=this.filmarcas
+
+        this.$emit("cambioFiltro", x)
+      
+    }
   },
 };
 </script>
@@ -75,7 +92,7 @@ export default {
 <style scoped>
 .lateralBar {
   height: 85vh;
-  width: 280px;
+  width: 200px;
   scroll-behavior: smooth;
   position: fixed;
 }
@@ -91,4 +108,16 @@ export default {
   background: #ff7146;
   border-radius: 20px;
 }
+
+@media (min-width: 1600px) { 
+  .lateralBar{
+    width: 230px !important;
+  }
+ }
+
+@media (min-width: 1920px) { 
+  .lateralBar{
+    width: 280px !important;
+  }
+ }
 </style>

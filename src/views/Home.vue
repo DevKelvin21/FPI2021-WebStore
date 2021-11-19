@@ -1,16 +1,14 @@
 <template>
   <div class="home">
-    <navbar></navbar>
+    <Navbar @buscarCadena="buscarCadena"/>
 
     <div class="row mt-5">
       <div class="col-2">
-        <lateralbar/>
+        <Lateralbar/>
       </div>
-      <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
-        <filtertop/>
-        <div class="row mx-1">
-          <card v-for="anuncio in anuncios" :key="anuncio.id" :anuncio="anuncio"/>  
-        </div>
+      <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
+        <Filtertop/>
+        <Anuncios ref="anuncios1"/>
       </div>
     </div>
   </div>
@@ -20,29 +18,27 @@
 // @ is an alias to /src
 import Navbar from '../components/Navbar.vue'
 import Lateralbar from '../components/Lateralbar.vue'
-import Card from "../components/Card.vue"
 import Filtertop from "../components/Filtertop.vue"
-
-
-
-import { db } from "../db"
-
+import Anuncios from "../components/Anuncios.vue"
 
 export default {
   name: 'Home',
-    data() {
-      return {
-        anuncios: [],
-      }
-  },
-  firestore: {
-      anuncios : db.collection("anuncios"),
-  },
   components: {
     Navbar,
     Lateralbar,
-    Card,
+    Anuncios,
     Filtertop,
+  },
+  methods : {
+    limpiarCadena (){
+      this.$refs.anuncios1.limpiar()
+    },
+    buscarCadena(cad){
+      this.$refs.anuncios1.buscarTexto(cad)
+    },
+    cambioFiltro(fil){
+      this.$refs.anuncios1.filtrar(fil)
+    }
   }
 }
 </script>
