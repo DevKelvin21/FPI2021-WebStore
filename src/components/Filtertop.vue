@@ -29,8 +29,8 @@
             <div class="btn">
               <button @click="OrdenarPrecio" type="submit" class="boton precio mt-1">
                 <div class="icono">
-                  <b-icon v-show="precioAsc" icon="arrow-up-short"></b-icon>
-                  <b-icon v-show="!precioAsc" icon="arrow-down-short"></b-icon>
+                  <span v-show="Ascendente"><b-icon icon="arrow-up-short"></b-icon></span>
+                  <span v-show="!Ascendente"><b-icon  icon="arrow-down-short"></b-icon></span>
                 </div>
                 <span>Precio</span>
               </button>
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     OrdenarPrecio(){
-      
+      this.Ascendente=!this.Ascendente
     }
   },
 };
