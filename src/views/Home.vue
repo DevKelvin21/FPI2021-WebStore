@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar @buscarCadena="buscarCadena"/>
+    <Navbar @limpiarCadena="limpiarCadena" @buscarCadena="buscarCadena" />
 
     <div class="row mt-5">
       <div class="col-2">
@@ -30,7 +30,7 @@ export default {
     Filtertop,
   },
   methods : {
-    limpiarCadena (){
+    limpiarCadena(){
       this.$refs.anuncios1.limpiar()
     },
     buscarCadena(cad){

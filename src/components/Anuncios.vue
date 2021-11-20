@@ -23,15 +23,15 @@ export default {
     anuncios: db.collection("anuncios"),
   },
   methods: {
-    buscarTexto() {
+    buscarTexto(cadena) {
       this.limpiar();
       this.anuncios = this.anuncios.filter((item) => {
-        var x = item.Marca.toLowerCase().indexOf(this.cadena.toLowerCase());
-        return x >= 0;
+        var x = item.Marca.toLowerCase().indexOf(cadena.toLowerCase());
+        return (x >= 0)
       });
     },
     limpiar() {
-      if (this.anunciosOriginal.length > 0) {
+      if (this.anunciosOriginal.length>0) {
         this.anuncios = this.anunciosOriginal.slice();
       }
     },

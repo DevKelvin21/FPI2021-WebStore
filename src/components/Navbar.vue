@@ -18,13 +18,14 @@
         </router-link>
 
         <b-nav-form class="control-form ml-1">
-          <b-icon icon="search" class="iconBuscar mb-1"></b-icon>
+          <b-icon icon="search" class="iconBuscar mb-1" @click="filtrarAnuncios"></b-icon>
+          <i class="bi bi-backspace-fill iconborrar mb-1" @click="limpiar" v-show="haytexto"></i>
           <b-form-input
             size="md"
             class="mr-sm-2 rounded-pill input-buscar mb-1"
             placeholder="Search"
             v-model="cadena"
-            @keydown="filtrarAnuncios"
+            @keypress="capturatexto" @keyup.enter="onEnter"
           ></b-form-input>
         </b-nav-form>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -188,20 +189,28 @@ export default {
   data() {
     return {
       cadena: "",
+      haytexto: false,
     };
   },
   methods: {
     limpiar() {
       this.cadena = "";
+      this.haytexto=false
       this.$emit("limpiarCadena");
     },
-    filtrarAnuncios(e) {
-      if (e.keyCode === 13) {
+    filtrarAnuncios() {
         if (this.cadena) {
           this.$emit("buscarCadena", this.cadena);
         }
-      }
     },
+    capturatexto(){
+      this.haytexto=true
+    }
+    ,onEnter() {
+      if (this.cadena) {
+        this.$emit("buscarCadena", this.cadena);
+      }
+    }
   },
 };
 </script>
@@ -213,7 +222,15 @@ export default {
 .iconBuscar {
   position: absolute;
   left: 10px;
+  cursor: pointer;
 }
+
+.iconborrar{
+  position: absolute;
+  left: 550px;
+  cursor: pointer;
+}
+
 .input-buscar {
   text-indent: 22px;
   width: 17rem;
