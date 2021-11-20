@@ -4,10 +4,10 @@
 
     <div class="row mt-5">
       <div class="col-2">
-        <Lateralbar/>
+        <Lateralbar @cambioFiltro="cambioFiltro"/>
       </div>
       <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
-        <Filtertop/>
+        <Filtertop @OrdenarPrecio="OrdenarPrecio"/>
         <Anuncios ref="anuncios1"/>
       </div>
     </div>
@@ -38,6 +38,9 @@ export default {
     },
     cambioFiltro(fil){
       this.$refs.anuncios1.filtrar(fil)
+    },
+    OrdenarPrecio(Ascendente){
+      this.$refs.anuncios1.OrdenarPrecio(Ascendente)
     }
   }
 }

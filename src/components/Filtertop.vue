@@ -20,6 +20,14 @@
                 aria-label="Amount (to the nearest dollar)"
               />
             </div>
+            <div class="btn">
+              <button type="submit" class="boton fecha mt-1">
+                <div class="icono">
+                  <i class="bi bi-filter-square"></i>
+                </div>
+                <span>Filtrar</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -29,8 +37,8 @@
             <div class="btn">
               <button @click="OrdenarPrecio" type="submit" class="boton precio mt-1">
                 <div class="icono">
-                  <span v-show="Ascendente"><b-icon icon="arrow-up-short"></b-icon></span>
-                  <span v-show="!Ascendente"><b-icon  icon="arrow-down-short"></b-icon></span>
+                  <span v-show="Ascendente"><i class="bi bi-sort-numeric-up"></i></span>
+                  <span v-show="!Ascendente"><i class="bi bi-sort-numeric-down-alt"></i></span>
                 </div>
                 <span>Precio</span>
               </button>
@@ -38,7 +46,7 @@
             <div class="btn">
               <button type="submit" class="boton fecha mt-1">
                 <div class="icono">
-                  <b-icon icon="calendar2-date"></b-icon>
+                  <i class="bi bi-clock"></i>
                 </div>
                 <span>Fecha</span>
               </button>
@@ -62,6 +70,7 @@ export default {
   methods: {
     OrdenarPrecio(){
       this.Ascendente=!this.Ascendente
+      this.$emit("OrdenarPrecio",this.Ascendente);
     }
   },
 };
@@ -78,7 +87,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 60px;
-  width: 355px;
+  width: 440px;
   position: relative;
   overflow: hidden;
   padding: 0 10px;
@@ -126,7 +135,7 @@ export default {
 
 .boton.precio i {
   color: #fff;
-  width: 35px;
+  width: 40px;
   height: auto;
 }
 
@@ -158,7 +167,7 @@ export default {
 }
 .boton.fecha span {
   position: absolute;
-  left: 8px;
+  left: 10px;
 }
 
 .boton.fecha .icono {
@@ -166,13 +175,13 @@ export default {
   align-items: center;
   position: absolute;
   z-index: 2;
-  left: calc(100% - 35px);
+  left: calc(100% - 40px);
   opacity: 1;
 }
 
 .boton.fecha i {
   color: #fff;
-  width: 35px;
+  width: 40px;
   height: auto;
 }
 

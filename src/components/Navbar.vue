@@ -227,7 +227,7 @@ export default {
 
 .iconborrar{
   position: absolute;
-  left: 550px;
+  left: 15rem;
   cursor: pointer;
 }
 
@@ -353,11 +353,17 @@ export default {
   .input-buscar {
     width: 450px !important;
   }
+  .iconborrar{
+    left: 400px !important;
+  }
 }
 
 @media (min-width: 1920px) {
   .input-buscar {
     width: 600px !important;
+  }
+  .iconborrar{
+    left: 550px !important;
   }
 }
 </style>

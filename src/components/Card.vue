@@ -6,7 +6,7 @@
           <p class="card-text lh-1" style="opacity: 0.7;" >{{anuncio.ROM}}</p>
           <img
             src="https://images.samsung.com/is/image/samsung/pe-galaxy-j6-j600-sm-j600gzkmpet-frontblack-135289039?$720_576_PNG$"
-            class="card-img-top" alt="...">
+            class="card-img-top" :alt="anuncio.Modelo">
           <div class="card-body d-none d-lg-block">
             <div class="d-flex container justify-content-between">
               <h4 class="card-title fw-bolder text-center">${{anuncio.Precio}}</h4>
