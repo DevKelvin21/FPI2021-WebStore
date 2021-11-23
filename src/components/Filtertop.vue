@@ -10,6 +10,7 @@
                 type="number"
                 class="form-control"
                 aria-label="Amount (to the nearest dollar)"
+                v-model="PrecioInicial"
               />
             </div>
             <div class="input-group">
@@ -18,10 +19,11 @@
                 type="number"
                 class="form-control"
                 aria-label="Amount (to the nearest dollar)"
+                v-model="PrecioFinal"
               />
             </div>
             <div class="btn">
-              <button type="submit" class="boton fecha mt-1">
+              <button @click="FiltrarRango" type="submit" class="boton fecha mt-1">
                 <div class="icono">
                   <i class="bi bi-filter-square"></i>
                 </div>
@@ -64,13 +66,17 @@ export default {
   data() {
     return {
       Ascendente: true,
-
+      PrecioInicial : 0,
+      PrecioFinal : 0,
     }
   },
   methods: {
     OrdenarPrecio(){
       this.Ascendente=!this.Ascendente
       this.$emit("OrdenarPrecio",this.Ascendente);
+    },
+    FiltrarRango(){
+      this.$emit("filtroRango",this.PrecioInicial, this.PrecioFinal);
     }
   },
 };

@@ -40,15 +40,15 @@
       <label for="pantalla" class="mb-1">Pantalla</label>
       <b-list-group class="mb-2" id="pantalla">
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="6.5">6.5</b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="6.5 Pulgadas">6.5</b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill> {{pantalla6.length}} </b-badge>
         </b-list-group-item>
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="5.5">5.5</b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="5.5 Pulgadas">5.5</b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill> {{pan5con5.length}} </b-badge>
         </b-list-group-item>
         <b-list-group-item class="d-flex justify-content-between align-items-center">
-          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="5">5</b-form-checkbox>
+          <b-form-checkbox @change="emitirFiltros" v-model="filpantallas" value="5 Pulgadas">5</b-form-checkbox>
           <b-badge style="background-color: #ff7146" pill> {{pantalla5.length}} </b-badge>
         </b-list-group-item>
       </b-list-group>

@@ -31,8 +31,23 @@ export default {
       }
       this.limpiar();
       this.anuncios = this.anuncios.filter((item) => {
-        var x = item.Marca.toLowerCase().indexOf(cadena.toLowerCase());
+        var x = item.Titulo.toLowerCase().indexOf(cadena.toLowerCase());
         return (x >= 0)
+      });
+    },
+    filtroRango(inicial, final){
+      if(this.anunciosOriginal.length==0){
+        this.anunciosOriginal=this.anuncios.slice();
+      }else{
+        this.anuncios = this.anunciosOriginal.slice();
+      }
+      this.limpiar();
+      this.anuncios = this.anuncios.filter((item) => {
+        if(item.Precio>= inicial && item.Precio<=final){
+          return true;
+        }else{
+          return false;
+        }
       });
     },
     limpiar() {
@@ -56,19 +71,18 @@ export default {
     filtrar(filtro){
       this.limpiar()
 
-      if(filtro== null)
+      if(filtro == null)
         return
-      if(filtro.filsistemas == null || filtro.filpantallas==null || filtro.filmarcas==null)
+      if(filtro.filsistemas == null || filtro.filpantallas == null || filtro.filmarcas == null)
         return
-       this.anuncios = this.anuncios.filter((item) => {
-
+      
+      this.anuncios = this.anuncios.filter((item) => {
           if(filtro.filsistemas.length==0 && filtro.filpantallas.length==0 && filtro.filmarcas.length==0)
-            return true
-
+            return true 
+          
             // validando sistema
-
           if(filtro.filsistemas.length>0){
-            for(var x ; x<filtro.filsistemas.length; x++){
+            for(var x=0 ; x<filtro.filsistemas.length; x++){
               if(item.Sistema==filtro.filsistemas[x]){
                 return true
               }
@@ -78,7 +92,7 @@ export default {
             // validando pantalla
 
           if(filtro.filpantallas.length>0){
-            for(var y ; y<filtro.filpantallas.length; y++){
+            for(var y=0 ; y<filtro.filpantallas.length; y++){
               if(item.Pantalla==filtro.filpantallas[y]){
                 return true
               }
@@ -88,7 +102,7 @@ export default {
             // validando marca
 
           if(filtro.filmarcas.length>0){
-            for(var z ; z<filtro.filmarcas.length; z++){
+            for(var z=0 ; z<filtro.filmarcas.length; z++){
               if(item.Marca==filtro.filmarcas[z]){
                 return true
               }
