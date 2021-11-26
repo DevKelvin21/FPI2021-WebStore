@@ -46,37 +46,84 @@
               </button>
             </div>
             <div class="btn">
-              <button type="submit" class="boton fecha mt-1">
+              <button @click="Ordenartitulo" type="submit" class="boton fecha mt-1">
                 <div class="icono">
-                  <i class="bi bi-clock"></i>
+                  <span v-show="Tituloasc"><i class="bi bi-sort-alpha-down"></i></span>
+                  <span v-show="!Tituloasc"><i class="bi bi-sort-alpha-up-alt"></i></span>
                 </div>
-                <span>Fecha</span>
+                <span>Titulo</span>
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="d-block d-lg-none d-md-block">
+        <div class="row">
+          <div class="col-6">
+          <b-dropdown text="Ordenar por " variant="outline-danger">
+            <b-dropdown-item @click="Mayorprecio">Mayor Precio</b-dropdown-item>
+            <b-dropdown-item @click="Menorprecio">Menor Precio</b-dropdown-item>
+            <b-dropdown-item @click="tituloaz">Titulo <i class="bi bi-sort-alpha-down"></i></b-dropdown-item>
+            <b-dropdown-item @click="tituloza">Titulo <i class="bi bi-sort-alpha-up-alt"></i></b-dropdown-item>
+          </b-dropdown>
+        </div>  
+        <div class="col-6">
+          <b-dropdown size="lg" dropleft variant="link" toggle-class="text-decoration-none" no-caret>
+            <template #button-content><span><i class="bi bi-funnel-fill"></i></span>
+            </template>
+            <b-dropdown-item class="px-4 py-3"><Lateralbar/></b-dropdown-item>
+          </b-dropdown>
+          
+        </div>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import Lateralbar from './Lateralbar.vue'
+
 export default {
   name : "Filtertop",
+  components : {
+    Lateralbar,
+  },
   data() {
     return {
       Ascendente: true,
       PrecioInicial : 0,
       PrecioFinal : 0,
+      Tituloasc : true,
     }
   },
   methods: {
+    Ordenartitulo(){
+      this.Tituloasc=!this.Tituloasc
+      this.$emit("OrdenarTitulo",this.Tituloasc)
+    },
+    tituloaz(){
+      this.Tituloasc=true
+      this.$emit("OrdenarTitulo",this.Tituloasc)
+    },
+    tituloza(){
+      this.Tituloasc=false
+      this.$emit("OrdenarTitulo",this.Tituloasc)
+    },
     OrdenarPrecio(){
       this.Ascendente=!this.Ascendente
       this.$emit("OrdenarPrecio",this.Ascendente);
     },
     FiltrarRango(){
       this.$emit("filtroRango",this.PrecioInicial, this.PrecioFinal);
+    },
+    Mayorprecio(){
+      this.Ascendente=false
+      this.$emit("OrdenarPrecio",this.Ascendente);
+    },
+    Menorprecio(){
+      this.Ascendente=true
+      this.$emit("OrdenarPrecio",this.Ascendente);
     }
   },
 };

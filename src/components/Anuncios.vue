@@ -68,6 +68,19 @@ export default {
         return retorno
       })
     },
+    OrdenarTitulo(titulo){
+      this.anuncios.sort((a,b)=>{
+        var auxiliar =1
+        if(a.Titulo.toLowerCase()>b.Titulo.toLowerCase())
+          auxiliar = 1;
+        else if(a.Titulo.toLowerCase()<b.Titulo.toLowerCase())
+          auxiliar = -1;  
+        if(!titulo)
+          auxiliar = auxiliar*-1
+          
+        return auxiliar
+      })
+    },
     filtrar(filtro){
       this.limpiar()
 

@@ -4,10 +4,12 @@
 
     <div class="row mt-5">
       <div class="col-2">
-        <Lateralbar @cambioFiltro="cambioFiltro"/>
+        <div class="d-none d-sm-none d-md-none d-xl-block d-lg-block ">
+          <Lateralbar @cambioFiltro="cambioFiltro"/>
+        </div>  
       </div>
       <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
-        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango"/>
+        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango" @OrdenarTitulo="OrdenarTitulo"/>
         <Anuncios ref="anuncios1"/>
       </div>
     </div>
@@ -44,6 +46,9 @@ export default {
     },
     filtroRango(inicial, final){
       this.$refs.anuncios1.filtroRango(inicial, final)
+    },
+    OrdenarTitulo(titulo){
+      this.$refs.anuncios1.OrdenarTitulo(titulo)
     }
   }
 }
