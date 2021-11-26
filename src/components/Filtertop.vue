@@ -61,7 +61,7 @@
     <div class="d-block d-lg-none d-md-block">
         <div class="row">
           <div class="col-6">
-          <b-dropdown text="Ordenar por " variant="outline-danger">
+          <b-dropdown text="Ordenar por " variant="outline-dark">
             <b-dropdown-item @click="Mayorprecio">Mayor Precio</b-dropdown-item>
             <b-dropdown-item @click="Menorprecio">Menor Precio</b-dropdown-item>
             <b-dropdown-item @click="tituloaz">Titulo <i class="bi bi-sort-alpha-down"></i></b-dropdown-item>
@@ -70,7 +70,7 @@
         </div>  
         <div class="col-6">
           <b-dropdown size="lg" dropleft variant="link" toggle-class="text-decoration-none" no-caret>
-            <template #button-content><span><i class="bi bi-funnel-fill"></i></span>
+            <template #button-content><span><i class="bi bi-funnel-fill" style="color: #343a40;"></i></span>
             </template>
             <b-dropdown-item class="px-4 py-3"><Lateralbar/></b-dropdown-item>
           </b-dropdown>

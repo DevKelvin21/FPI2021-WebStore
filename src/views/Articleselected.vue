@@ -1,18 +1,20 @@
 <template>
   <div class="articleselected">
     <Navbar/>
-    <div class="container mt-5">
-      <div class="row mt-5">
+    <div class="container-fluid mt-5">
+      <div class="container" style="margin-bottom: 150px;">
+        <div class="row mt-5">
         <div class="col-12 mt-5 border-bottom border-1">
           <h1 class="text-start" style="text-transform: uppercase;">{{article.Titulo}}</h1>
         </div>
         <div class="col-12 col-md-6 col-lg-7">
-          <Carrousel/>
+          <Carrousel :article="article"/>
         </div>
         <div class="col-12 col-md-6 col-lg-5 px-1">
           <div class="row mt-5">
             <div class="col-12">
-              <h1 class="text-start" style="color: #f37848;"> ${{article.Precio}} </h1>
+              <Valoracion/>
+              <h1 class="text-start" style="color: #f37848; font-size: 60px;"> ${{article.Precio}} </h1>
             </div>
             <div class="col-12 mt-2">
               <div class="d-grid gap-2">
@@ -20,14 +22,15 @@
               </div>
             </div>
             <div class="col-12 mt-2">
-              <div class="border border-1 border-secondary">
-                <div class="row">
-                  <div class="col-4"><i class="bi bi-info-circle"></i></div>
-                  <div class="col-8"><h3>Informacion</h3></div>
-                </div>
-              </div>
+              <Details :article="article"/>
             </div>
           </div>  
+        </div>
+      </div>
+      </div>
+      <div class="row" id="descripcion">
+        <div class="col-12" style="background-color: rgb(233, 233, 233);">
+          <Specs :article="article"/>
         </div>
       </div>
     </div>
@@ -36,13 +39,17 @@
 
 <script>
 import Carrousel from '../components/Carrousel.vue'
+import Details from '../components/Details.vue'
 import Navbar from "../components/Navbar.vue"
+import Specs from '../components/Specs.vue'
+import Valoracion from '../components/Valoracion.vue'
 import { db } from '../db'
 
 export default {
   name: "Articleselected",
   components: {
-    Navbar,Carrousel,
+    Navbar,Carrousel,Details,Valoracion,
+    Specs,
   },
   methods: {
     getdata(id) {
