@@ -1,6 +1,7 @@
 <template>
   <div class="col-12 col-xs-12 col-lg-3 col-sm-4">
-      <router-link to="/Articleselected" class="container" style="text-decoration: none; color: black;" href="article.html">
+      <router-link :to="{ name: 'Articleselected', params: { id: anuncio.id } }" 
+          class="container" style="text-decoration: none; color: black;" href="article.html">
         <div class="card" style="box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); border: none;">
           <h4 class="card-title pt-3  text-center">{{anuncio.Marca}} {{anuncio.Modelo}}</h4>
           <p class="card-text lh-1" style="opacity: 0.7;" >{{anuncio.ROM}}</p>
