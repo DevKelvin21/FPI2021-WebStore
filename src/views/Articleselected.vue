@@ -18,7 +18,8 @@
             </div>
             <div class="col-12 mt-2">
               <div class="d-grid gap-2">
-                <button class="btn btn-outline-dark" type="button">Comprar Ahora <i class="bi bi-wallet2"></i></button>
+                <button class="btn btn-outline-dark" type="button" @click="toast">Comprar Ahora <i class="bi bi-wallet2"></i></button>
+                <Toasts></Toasts>
               </div>
             </div>
             <div class="col-12 mt-2">
@@ -59,6 +60,9 @@ export default {
           }
         });
     },
+    toast(){
+      this.$toast.success('Compra Realizada Exitosamente');
+    }
   },
   data: () =>({
     article : {}

@@ -5,6 +5,9 @@ import './plugins/bootstrap-vue'
 import App from './App.vue'
 import router from './router'
 import { firestorePlugin } from 'vuefire'
+import VueBootstrapToasts from "vue-bootstrap-toasts";
+
+Vue.use(VueBootstrapToasts)
 
 Vue.use(firestorePlugin)
 
