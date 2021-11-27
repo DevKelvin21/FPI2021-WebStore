@@ -1,5 +1,12 @@
 <template>
   <div class="row mx-1 mt-2">
+
+    <div v-show="apliquefiltro" class="alert">
+      <div class="d-flex container justify-content-between" >
+        <span>Resultados obtenidos</span>
+        <button @click="limpiar">x</button>
+      </div>
+    </div>
     <Card v-for="anuncio in anuncios" :key="anuncio.id" :anuncio="anuncio" />
   </div>
 </template>
@@ -17,6 +24,7 @@ export default {
     return {
       anuncios: [],
       anunciosOriginal: [],
+      apliquefiltro : false
     };
   },
   firestore: {
@@ -30,6 +38,7 @@ export default {
         this.anuncios = this.anunciosOriginal.slice();
       }
       this.limpiar();
+      this.apliquefiltro=true;
       this.anuncios = this.anuncios.filter((item) => {
         var x = item.Titulo.toLowerCase().indexOf(cadena.toLowerCase());
         return (x >= 0)
@@ -42,6 +51,7 @@ export default {
         this.anuncios = this.anunciosOriginal.slice();
       }
       this.limpiar();
+      this.apliquefiltro=true;
       this.anuncios = this.anuncios.filter((item) => {
         if(item.Precio>= inicial && item.Precio<=final){
           return true;
@@ -53,6 +63,7 @@ export default {
     limpiar() {
       if (this.anunciosOriginal.length>0) {
         this.anuncios = this.anunciosOriginal.slice();
+        this.apliquefiltro=false;
       }
     },
     OrdenarPrecio(Ascendente){
@@ -83,7 +94,7 @@ export default {
     },
     filtrar(filtro){
       this.limpiar()
-
+      
       if(filtro == null)
         return
       if(filtro.filsistemas == null || filtro.filpantallas == null || filtro.filmarcas == null)
@@ -133,4 +144,14 @@ export default {
 </script>
 
 <style>
+.alert{
+  background-color: rgb(255, 209, 140);
+  padding: 10px;
+}
+
+.alert button{
+  cursor: pointer;
+  background-color: rgb(255, 209, 140);
+  border: none;
+}
 </style>

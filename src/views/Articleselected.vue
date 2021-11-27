@@ -5,7 +5,7 @@
       <div class="container" style="margin-bottom: 150px;">
         <div class="row mt-5">
         <div class="col-12 mt-5 border-bottom border-1">
-          <h1 class="text-start" style="text-transform: uppercase;">{{article.Titulo}}</h1>
+          <h1 class="text-start titulo" style="text-transform: uppercase;">{{article.Titulo}}</h1>
         </div>
         <div class="col-12 col-md-6 col-lg-7">
           <Carrousel :article="article"/>
@@ -70,4 +70,13 @@ export default {
 </script>
 
 <style>
+ .titulo{
+    font-size: 17px;
+  }
+
+@media (min-width: 750px) {
+  .titulo{
+    font-size: 45px;
+  }
+}
 </style>

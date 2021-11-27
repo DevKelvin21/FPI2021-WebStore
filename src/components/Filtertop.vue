@@ -115,7 +115,12 @@ export default {
       this.$emit("OrdenarPrecio",this.Ascendente);
     },
     FiltrarRango(){
-      this.$emit("filtroRango",this.PrecioInicial, this.PrecioFinal);
+      if(this.PrecioInicial>=0 && this.PrecioFinal>0 && this.PrecioFinal>this.PrecioInicial){
+        this.$emit("filtroRango",this.PrecioInicial, this.PrecioFinal);
+        this.PrecioInicial=0;
+        this.PrecioFinal=0;
+      }
+      
     },
     Mayorprecio(){
       this.Ascendente=false
