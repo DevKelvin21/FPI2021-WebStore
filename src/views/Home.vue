@@ -9,7 +9,7 @@
         </div>  
       </div>
       <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
-        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango" @OrdenarTitulo="OrdenarTitulo"/>
+        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango" @OrdenarTitulo="OrdenarTitulo" @cambioFiltro="cambioFiltro"/>
         <Anuncios ref="anuncios1"/>
       </div>
     </div>

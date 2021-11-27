@@ -69,12 +69,7 @@
           </b-dropdown>
         </div>  
         <div class="col-6">
-          <b-dropdown size="lg" dropleft variant="link" toggle-class="text-decoration-none" no-caret>
-            <template #button-content><span><i class="bi bi-funnel-fill" style="color: #343a40;"></i></span>
-            </template>
-            <b-dropdown-item class="px-4 py-3"><Lateralbar/></b-dropdown-item>
-          </b-dropdown>
-          
+          <Mobilefilter @cambioFiltro="cambioFiltro"/>
         </div>
         </div>
     </div>
@@ -82,12 +77,12 @@
 </template>
 
 <script>
-  import Lateralbar from './Lateralbar.vue'
+  import Mobilefilter from './Mobilefilter.vue'
 
 export default {
   name : "Filtertop",
   components : {
-    Lateralbar,
+    Mobilefilter,
   },
   data() {
     return {
@@ -98,6 +93,9 @@ export default {
     }
   },
   methods: {
+    cambioFiltro(x){
+      this.$emit("cambioFiltro", x)
+    },
     Ordenartitulo(){
       this.Tituloasc=!this.Tituloasc
       this.$emit("OrdenarTitulo",this.Tituloasc)
