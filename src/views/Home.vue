@@ -5,11 +5,11 @@
     <div class="row mt-5">
       <div class="col-2">
         <div class="d-none d-sm-none d-md-none d-xl-block d-lg-block ">
-          <Lateralbar @cambioFiltro="cambioFiltro"/>
+          <Lateralbar @cambioFiltro="cambioFiltro" @filtrarnuevos="filtrarnuevos"/>
         </div>  
       </div>
       <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 col-12 mt-5">
-        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango" @OrdenarTitulo="OrdenarTitulo" @cambioFiltro="cambioFiltro"/>
+        <Filtertop @OrdenarPrecio="OrdenarPrecio" @filtroRango="filtroRango" @OrdenarTitulo="OrdenarTitulo" @cambioFiltro="cambioFiltro" @filtrarnuevos="filtrarnuevos"/>
         <Anuncios ref="anuncios1"/>
       </div>
     </div>
@@ -32,6 +32,9 @@ export default {
     Filtertop,
   },
   methods : {
+    filtrarnuevos(){
+      this.$refs.anuncios1.filtrarnuevos()
+    },
     limpiarCadena(){
       this.$refs.anuncios1.limpiar()
     },

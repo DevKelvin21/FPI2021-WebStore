@@ -60,6 +60,22 @@ export default {
         }
       });
     },
+    filtrarnuevos(){
+      if(this.anunciosOriginal.length==0){
+        this.anunciosOriginal=this.anuncios.slice();
+      }else{
+        this.anuncios = this.anunciosOriginal.slice();
+      }
+      this.limpiar();
+      this.apliquefiltro=true;
+      this.anuncios = this.anuncios.filter((item) => {
+        if(item.Estado=="Nuevo"){
+          return true;
+        }else{
+          return false;
+        }
+      });
+    },
     limpiar() {
       if (this.anunciosOriginal.length>0) {
         this.anuncios = this.anunciosOriginal.slice();

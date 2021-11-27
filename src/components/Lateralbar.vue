@@ -2,7 +2,7 @@
   <div>
     <div class=" container ml-3 mt-5 overflow-auto lateralBar">
       <b-container class="mb-2">
-        <b-form-checkbox class="m-0" switch size="lg">Nuevo</b-form-checkbox>
+        <b-form-checkbox class="m-0" v-model="checked" switch size="lg" @change="filtrarnuevos" >Nuevo</b-form-checkbox>
       </b-container>
 
       <label for="marca" class="mb-1">Marca</label>
@@ -67,6 +67,7 @@ export default {
       filpantallas: [],
       filmarcas:[],
       iphone:[],samsung:[],xiaomi:[],nokia:[],android:[],ios:[],pantalla5:[],pan5con5:[],pantalla6:[],
+      checked: false,
 
     };
   },
@@ -92,9 +93,13 @@ export default {
       if(this.filmarcas.length>0)
         x.filmarcas=this.filmarcas
 
-        this.$emit("cambioFiltro", x)
-      
-    }
+        this.$emit("cambioFiltro", x)   
+    },
+    filtrarnuevos(){
+      if(this.checked){
+        this.$emit("filtrarnuevos") 
+      }
+    },
   },
 };
 </script>

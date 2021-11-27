@@ -69,7 +69,7 @@
           </b-dropdown>
         </div>  
         <div class="col-6">
-          <Mobilefilter @cambioFiltro="cambioFiltro"/>
+          <Mobilefilter @cambioFiltro="cambioFiltro" @filtrarnuevos="filtrarnuevos"/>
         </div>
         </div>
     </div>
@@ -93,6 +93,9 @@ export default {
     }
   },
   methods: {
+    filtrarnuevos(){
+      this.$emit("filtrarnuevos")
+    },
     cambioFiltro(x){
       this.$emit("cambioFiltro", x)
     },
